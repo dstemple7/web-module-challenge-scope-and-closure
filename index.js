@@ -130,20 +130,13 @@ Final Score: 6 - 10 */
 function scoreboard(cb, inningAmount){
   let home = 0
   let away = 0
+  let inNum = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"]
   for (let i = 0; i < inningAmount; i++) {
     home = home + cb();
     away = away + cb();
+    console.log (`${inNum[i]} inning: ${home} - ${away}`);
   }
-  console.log ("1st Inning:" + home + '-' + away);
-  console.log ("2nd Inning:" + home + '-' + away);
-  console.log ("3rd Inning:" + home + '-' + away);
-  console.log ("4th Inning:" + home + '-' + away);
-  console.log ("5th Inning:" + home + '-' + away);
-  console.log ("6th Inning:" + home + '-' + away);
-  console.log ("7th Inning:" + home + '-' + away);
-  console.log ("8th Inning:" + home + '-' + away);
-  console.log ("9th Inning:" + home + '-' + away); 
-  console.log ("Final Score:" + home + '-' + away);
+  console.log (`Final Score: ${home} -${away}`);
 }
 
 scoreboard(inning, 9);
