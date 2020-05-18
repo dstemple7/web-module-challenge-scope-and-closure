@@ -136,7 +136,25 @@ function scoreboard(cb, inningAmount){
     away = away + cb();
     console.log (`${inNum[i]} inning: ${home} - ${away}`);
   }
-  console.log (`Final Score: ${home} -${away}`);
+  console.log (`Final Score: ${home} - ${away}`);
 }
 
 scoreboard(inning, 9);
+
+
+// 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an 
+// explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
+
+function createBase(baseNum){
+  return function(addNum){
+    return baseNum + addNum;
+  }
+}
+
+var addSix = createBase(6);
+var addEight = createBase(8);
+
+console.log(addSix(10)); // returns 16
+console.log(addSix(21)); // returns 27
+console.log(addEight(10)); // returns 18
+console.log(addEight(21)); // returns 29
