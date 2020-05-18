@@ -14,11 +14,15 @@
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
-function processFirstItem(stringList, callback) {
-  return callback(stringList[0]);
+function processFirstItem(stringList, cb) {
+  return cb(stringList);
 }
 
-// processFirstItem(['foo', 'bar'], '(str) => str + str');
+const firstElement = function(stringList){
+  return stringList[0];
+}
+
+processFirstItem(['foo', 'bar'], firstElement);
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -76,7 +80,8 @@ const innningScore = inning();
 
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game 
+in the form of an object.
 
 For example, 
 
@@ -88,18 +93,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inningAmount){
-  var home = 0
-  var away = 0
+function finalScore(cb, inningAmount){
+  let home = 0
+  let away = 0
   for (let i = 0; i < inningAmount; i++) {
-      home = home + inning();
-      away = away + inning();
+      home = home + cb();
+      away = away + cb();
   }
-  console.log("Home:"  + home);
-  console.log("Away:"  + away);
+  console.log('"Home": '  + home + ",");
+  console.log('"Away": '  + away + ",");
 }
 
-console.log(finalScore(9));
+finalScore(inning, 9);
 
 /* Task 4: 
 
@@ -122,15 +127,23 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(inningAmount){
-  var home = 0
-  var away = 0
+function scoreboard(cb, inningAmount){
+  let home = 0
+  let away = 0
   for (let i = 0; i < inningAmount; i++) {
-      home = home + inning();
-      away = away + inning();
+    home = home + cb();
+    away = away + cb();
   }
-  console.log("Home:"  + home);
-  console.log("Away:"  + away);
+  console.log ("1st Inning:" + home + '-' + away);
+  console.log ("2nd Inning:" + home + '-' + away);
+  console.log ("3rd Inning:" + home + '-' + away);
+  console.log ("4th Inning:" + home + '-' + away);
+  console.log ("5th Inning:" + home + '-' + away);
+  console.log ("6th Inning:" + home + '-' + away);
+  console.log ("7th Inning:" + home + '-' + away);
+  console.log ("8th Inning:" + home + '-' + away);
+  console.log ("9th Inning:" + home + '-' + away); 
+  console.log ("Final Score:" + home + '-' + away);
 }
 
-console.log(scoreboard(9));
+scoreboard(inning, 9);
